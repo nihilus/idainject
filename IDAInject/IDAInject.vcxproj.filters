@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e753b93b-12a6-4668-a66d-234558f0e82e}</UniqueIdentifier>
+      <Extensions>.cpp;.cxx;.c</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b00e639b-271a-47d4-a015-dfbebb55e988}</UniqueIdentifier>
+      <Extensions>.h;.hpp</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{08547c5d-781a-44e9-8247-e1c9096e3ffa}</UniqueIdentifier>
+      <Extensions>.rc;.rc2;.ico;.gif;.bmp;</Extensions>
+    </Filter>
+    <Filter Include="NInjectLib">
+      <UniqueIdentifier>{46511ff9-df3e-4c9f-a32d-fe8887cfaf96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SimpleConfig">
+      <UniqueIdentifier>{0a154fa3-b413-45f1-99f9-baa89def618f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IDAInject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IDAInjectGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NInjectLib\GenericInjector.cpp">
+      <Filter>NInjectLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NInjectLib\IATModifier.cpp">
+      <Filter>NInjectLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NInjectLib\InjectLib.cpp">
+      <Filter>NInjectLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NInjectLib\Process.cpp">
+      <Filter>NInjectLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NInjectLib\RemoteLibCall.cpp">
+      <Filter>NInjectLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SimpleConfig\SimpleConfig.cpp">
+      <Filter>SimpleConfig</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IDAInject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDAInjectGUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NInjectLib\GenericInjector.h">
+      <Filter>NInjectLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NInjectLib\IATModifier.h">
+      <Filter>NInjectLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NInjectLib\InjectLib.h">
+      <Filter>NInjectLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NInjectLib\Process.h">
+      <Filter>NInjectLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NInjectLib\RemoteLibCall.h">
+      <Filter>NInjectLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SimpleConfig\SimpleConfig.h">
+      <Filter>SimpleConfig</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IDAInject.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
