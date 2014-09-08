@@ -1,5 +1,4 @@
-#ifndef IATMODIFIER_H
-#define IATMODIFIER_H
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -33,18 +32,16 @@ private:
 class IATModifierException : public std::runtime_error
 {
 public:
-	IATModifierException(const std::string& msg) : std::runtime_error(msg) {};
+	IATModifierException::IATModifierException(const std::string& msg) : std::runtime_error(msg) {};
 };
 
 // exception while writing image import descriptors
 class WriteIIDException : public std::runtime_error
 {
 public:
-	WriteIIDException(const std::string& msg, const MemoryAccessException& e) : std::runtime_error(msg), innerException_(e) {};
+	WriteIIDException::WriteIIDException(const std::string& msg, const MemoryAccessException& e) : std::runtime_error(msg), innerException_(e) {};
 	MemoryAccessException innerException() const { return innerException_; };
 
 private:
 	MemoryAccessException innerException_;
 };
-
-#endif

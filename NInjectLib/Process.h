@@ -1,14 +1,9 @@
-#ifndef PROCESS_H_
-#define PROCESS_H_
+#pragma once
 
 #include <iostream>
 #include <vector>
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0501
-#endif
 #include <Windows.h>
 #include <TlHelp32.h>
-#include <stdexcept>
 
 class Process
 {
@@ -16,8 +11,8 @@ public:
 
 	//Process(HANDLE hProcess);
 	Process(DWORD processID);
-	Process(const Process& instance);
-	Process& operator=(const Process& instance);
+	Process::Process(const Process& instance);
+	Process& Process::operator=(const Process& instance);
 	~Process();
 	
 	LPVOID allocMem(DWORD size) const;
@@ -30,7 +25,7 @@ public:
 	DWORD protectMemory(LPVOID address, SIZE_T size, DWORD protect) const;
 	bool startThread(LPVOID address, LPVOID param);
 	void waitForThread();
-	std::vector<MODULEENTRY32> getModules() const;
+	std::vector<MODULEENTRY32> Process::getModules() const;
 	
 	uintptr_t getImageBase(HANDLE hThread) const;
 	uintptr_t getImageBase() const;
@@ -49,14 +44,14 @@ private:
 class ProcessHandleException : public std::runtime_error
 {
 public:
-	ProcessHandleException(const std::string& msg) : std::runtime_error(msg) {};
+	ProcessHandleException::ProcessHandleException(const std::string& msg) : std::runtime_error(msg) {};
 };
 
 // anything with memory
 class ProcessMemoryException : public std::runtime_error
 {
 public:
-	ProcessMemoryException(const std::string& msg, LPVOID address) : std::runtime_error(msg), address_(address) {};
+	ProcessMemoryException::ProcessMemoryException(const std::string& msg, LPVOID address) : std::runtime_error(msg), address_(address) {};
 	LPVOID getAddress() { return address_; };
 private:
 	LPVOID address_;
@@ -66,27 +61,26 @@ private:
 class MemoryAccessException : public std::runtime_error
 {
 public:
-	MemoryAccessException(const std::string& msg) : std::runtime_error(msg) {};	
+	MemoryAccessException::MemoryAccessException(const std::string& msg) : std::runtime_error(msg) {};	
 };
 
 // allocate
 class MemoryAllocationException : public std::runtime_error
 {
 public:
-	MemoryAllocationException(const std::string& msg) : std::runtime_error(msg) {};	
+	MemoryAllocationException::MemoryAllocationException(const std::string& msg) : std::runtime_error(msg) {};	
 };
 
 // query memory
 class MemoryQueryException : public std::runtime_error
 {
 public:
-	MemoryQueryException(const std::string& msg) : std::runtime_error(msg) {};	
+	MemoryQueryException::MemoryQueryException(const std::string& msg) : std::runtime_error(msg) {};	
 };
 
 // protect memory
 class MemoryProtectException : public ProcessMemoryException
 {
 public:
-	MemoryProtectException(const std::string& msg, LPVOID address) : ProcessMemoryException(msg, address) {};	
+	MemoryProtectException::MemoryProtectException(const std::string& msg, LPVOID address) : ProcessMemoryException(msg, address) {};	
 };
-#endif

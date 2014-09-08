@@ -115,7 +115,7 @@ string getConfigFile()
 		p /= ConfigFile;
 		retVal = p;
 	}
-	return retVal.native_file_string();
+	return retVal.string();
 }
 
 // perform actual injection for attach event in background thread,

@@ -1,5 +1,4 @@
-#ifndef REMOTE_LIB_CALL_H
-#define REMOTE_LIB_CALL_H
+#pragma once
 
 #include <iostream>
 #include <Windows.h>
@@ -29,4 +28,3 @@ private:
 	std::string functionName_;
 	int functionNumber_;
 };
-#endif
