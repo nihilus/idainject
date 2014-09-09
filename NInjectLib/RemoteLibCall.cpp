@@ -98,8 +98,8 @@ INJECT_CODEPAYLOAD RemoteLibCall::createCodePayload()
 
 	__asm
 	{
-		mov s, offset start
-		mov e, offset end
+		mov s, offset start;
+		mov e, offset end;
 		mov source, offset start
 		jmp end // we only want to copy this code - not execute it so jump over it
 	start:
