@@ -11,7 +11,7 @@ public:
 	IATModifier(const Process& process);
 	~IATModifier();
 	std::vector<IMAGE_IMPORT_DESCRIPTOR> readImportTable();
-	void setImageBase(uintptr_t address);
+	bool setImageBase(uintptr_t address);
 	void writeIAT(const std::vector<std::string>& dlls);
 	void writeIAT(const std::string& dll);
 	IMAGE_NT_HEADERS readNTHeaders() const;

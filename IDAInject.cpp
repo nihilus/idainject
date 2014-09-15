@@ -247,7 +247,7 @@ int idaapi callback(void* user_data, int notification_code, va_list va)
 				bool found = false;
 				// search all modules to find .exe header
 				for (bool ok=get_first_module(&mInfo); ok && !found; ok=get_next_module(&mInfo))
-					if (iatMod.setIBA((char*)mInfo.base)) found = true;
+					if (iatMod.setImageBase(mInfo.base)) found = true;
 				// then add import descriptors for all the dlls to be injected
 				if (found)
 				{

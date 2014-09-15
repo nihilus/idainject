@@ -15,24 +15,25 @@ IATModifier::~IATModifier()
 }
 
 // check if supplied IBA is a valid executable header, so we can locate the import descriptor
-void IATModifier::setImageBase(uintptr_t address)
+bool IATModifier::setImageBase(uintptr_t address)
 {
 	IMAGE_DOS_HEADER dosHeader;
 	process_.readMemory((void*)address, &dosHeader, sizeof(IMAGE_DOS_HEADER));
 	if (dosHeader.e_magic != IMAGE_DOS_SIGNATURE)
-		throw std::runtime_error("Error while setting image base address: no DOS signature found");
+		return false; //throw std::runtime_error("Error while setting image base address: no DOS signature found");
 
 	IMAGE_NT_HEADERS ntHeaders;
 	ntHeadersAddr_ = address + dosHeader.e_lfanew;
 	process_.readMemory((void*)ntHeadersAddr_, &ntHeaders, sizeof(IMAGE_NT_HEADERS));
 	if (ntHeaders.Signature != IMAGE_NT_SIGNATURE)
-		throw std::runtime_error("Error while setting image base address: no NT signature found");
+		return false; //throw std::runtime_error("Error while setting image base address: no NT signature found");
 	if (ntHeaders.FileHeader.Characteristics & IMAGE_FILE_DLL)
-		throw std::runtime_error("Error while setting image base address: not the image base of an executable");
+		return false; //throw std::runtime_error("Error while setting image base address: not the image base of an executable");
 	if (ntHeaders.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress == 0)
-		throw std::runtime_error("Error while setting image base address: no import directory existing");
+		return false; //throw std::runtime_error("Error while setting image base address: no import directory existing");
 	importDescrTblSize_ = ntHeaders.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size;
-	importDescrTblAddr_ = (PIMAGE_IMPORT_DESCRIPTOR)(ntHeaders.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress + (DWORD)address);	
+	importDescrTblAddr_ = (PIMAGE_IMPORT_DESCRIPTOR)(ntHeaders.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress + (DWORD)address);
+	return true;
 }
 
 void IATModifier::writeIAT(const std::string& dll)
