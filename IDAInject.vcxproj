@@ -37,11 +37,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    </OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    </OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
@@ -75,7 +77,7 @@
     <Link>
       <AdditionalOptions>/EXPORT:PLUGIN %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>ida.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName).plw</OutputFile>
+      <OutputFile>$(ProjectName).plw</OutputFile>
       <AdditionalLibraryDirectories>C:\Program\boost\boost_1_54_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug\IDAInject.pdb</ProgramDatabaseFile>
@@ -113,7 +115,7 @@
     <Link>
       <AdditionalOptions>/EXPORT:PLUGIN %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>ida.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName).plw</OutputFile>
+      <OutputFile>$(ProjectName).plw</OutputFile>
       <AdditionalLibraryDirectories>C:\Program\boost\boost_1_54_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>
